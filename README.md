@@ -1,0 +1,1 @@
+# SCOPEVISIO_interview_assignment
