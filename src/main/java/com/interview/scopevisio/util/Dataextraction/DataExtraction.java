@@ -37,9 +37,15 @@ public class DataExtraction {
 
         // the method to read and save CSV data
         public void extractSaveAll() {
+
+
             try (CSVReader csvReader = new CSVReader(new FileReader(csvFilePath))) {
                 String[] nextLine;
 
+                // truncate table
+                regionalzuordnungRepository.deleteAll();
+                // skip first line
+                nextLine = csvReader.readNext();
                 // read each line of the CSV file
                 while((nextLine = csvReader.readNext()) != null) {
                     String region1 = nextLine[region1Index];
@@ -47,7 +53,6 @@ public class DataExtraction {
                     String region4 = nextLine[region4Index];
                     String postleitZahl = nextLine[postleitZahlindex];
                     String bezirk = nextLine[bezirkIndex];
-
                     // save each entry to the database via repository
                     regionalzuordnungRepository.save(
                             new Regionalzuordnung(region1, region3, region4, postleitZahl, bezirk)

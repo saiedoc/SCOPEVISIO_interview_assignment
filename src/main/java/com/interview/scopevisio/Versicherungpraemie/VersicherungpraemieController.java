@@ -5,14 +5,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * VersicherungspraemieController is a controller class that contains all endpoints relevant to user
+ * insurance premium queries
+ */
 @RestController
 public class VersicherungpraemieController {
 
     @Autowired
-    VersicherungpraemieRepository versicherungpraemieRepository;
+    VersicherungpraemieService versicherungpraemieService;
 
-    VersicherungpraemieController(VersicherungpraemieRepository versicherungpraemieRepository){
-        this.versicherungpraemieRepository = versicherungpraemieRepository;
+    VersicherungpraemieController(VersicherungpraemieService versicherungpraemieService){
+        this.versicherungpraemieService = versicherungpraemieService;
     }
 
     /**
@@ -28,7 +32,7 @@ public class VersicherungpraemieController {
      */
     @PostMapping("/versicherungpraemie")
     Versicherungpraemie newVersicherungpraemie(@RequestBody Versicherungpraemie versicherungpraemie){
-        return versicherungpraemieRepository.save(versicherungpraemie);
+        return versicherungpraemieService.newVersicherungpraemie(versicherungpraemie);
     }
 
 }
