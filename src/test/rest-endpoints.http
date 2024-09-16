@@ -1,0 +1,21 @@
+###
+POST http://localhost:8080/versicherungpraemie
+Content-Type: application/json
+
+{
+  "kilometerLeistung": 5000,
+  "postleitzahl": "53177",
+  "fahrzeugtyp": "PKW"
+}
+
+
+###
+GET http://localhost:8080/versicherungpraemie/berechne-versicherungpraemie
+Content-Type: application/json
+
+{
+  "kilometerLeistung": 5000,
+  "postleitzahl": "79189",
+  "fahrzeugtyp": "PKW"
+}
+
